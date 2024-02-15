@@ -1,0 +1,93 @@
+{
+    "ComputeServers": {
+        "My_GitHub_Account": {
+            "FaaSType": "GitHubActions",
+            "UserName": "spark0510",
+            "ActionRepoName": "faasr-test",
+            "Branch": "main"
+        },
+        "My_IBM_Account": {
+            "FaaSType": "OpenWhisk",
+            "Endpoint": "https://openwhisk.deb170011.projects.jetstream-cloud.org:31001",
+            "Namespace": "faasr",
+            "SSL": "FALSE"
+        },
+        "My_AWS_Account": {
+            "FaaSType": "Lambda",
+            "Region": "us-east-1"
+        }
+    },
+    "DataStores": {
+        "My_Minio_Bucket": {
+            "Endpoint": "https://play.min.io",
+            "Bucket": "faasr-test",
+            "Region": "",
+            "Writable": "TRUE"
+        }
+    },
+    "FunctionList": {
+        "start": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": [
+                "test1",
+                "test2",
+                "test3"
+            ]
+        },
+        "test1": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": "test4"
+        },
+        "test2": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": "test5"
+        },
+        "test3": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": "final"
+        },
+        "test4": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": "final"
+        },
+        "test5": {
+            "FunctionName": "null_function",
+            "FaaSServer": "My_IBM_Account",
+            "InvokeNext": "final"
+        },
+        "final": {
+            "FunctionName": "test_function",
+            "FaaSServer": "My_IBM_Account"
+        }
+    },
+    "ActionContainers": {
+        "start": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "test1": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "test2": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "test3": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "test4": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "test5": "spark77/openwhisk-tidyverse:1.0.9.0-dev",
+        "final": "spark77/openwhisk-tidyverse:1.0.9.0-dev"
+    },
+    "FunctionGitRepo": {
+        "test_function": "spark0510/integration-test",
+        "null_function": "spark0510/integration-test"
+    },
+    "FunctionCRANPackage": {
+        "test_function": "rMR"
+    },
+    "FunctionGitHubPackage": {
+        "test_function": "cboettig/minioclient"
+    },
+    "FunctionInvoke": "start",
+    "InvocationID": "",
+    "FaaSrLog": "test",
+    "LoggingDataStore": "My_Minio_Bucket",
+    "DefaultDataStore": "My_Minio_Bucket"
+}
+
