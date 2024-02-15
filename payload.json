@@ -8,9 +8,9 @@
         },
         "My_IBM_Account": {
             "FaaSType": "OpenWhisk",
-            "Endpoint": "YOUR_OW_ENDPOINT",
-            "Namespace": "YOUR_OW_NAMESPACE",
-            "SSL": "YOUR_OW_SSL_CHECK"
+            "Endpoint": "https://openwhisk.deb170011.projects.jetstream-cloud.org:31001",
+            "Namespace": "faasr",
+            "SSL": "FALSE"
         },
         "My_AWS_Account": {
             "FaaSType": "Lambda",
